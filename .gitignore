@@ -12,6 +12,7 @@
 
 test-gcp.json
 Util_varios.sh
+sh_commit.sh
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

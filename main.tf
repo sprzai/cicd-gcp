@@ -1,5 +1,7 @@
 resource "google_storage_bucket" "func_bucket" {
-  name = "bucket-function-le2"
+  name          = "bucket-function-le2"
+  location      = "US"
+  force_destroy = true
 }
 
 resource "google_storage_bucket_object" "func_src" {
