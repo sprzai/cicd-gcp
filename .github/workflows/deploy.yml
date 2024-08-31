@@ -14,14 +14,13 @@ jobs:
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.0  # Especifica una versión de Terraform
 
     - name: Configure GCP Credentials
       uses: google-github-actions/auth@v1
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-    - name: Verify GCP Authentication
-      run: gcloud auth list
 
     - name: Initialize Terraform
       run: terraform init
@@ -29,16 +28,23 @@ jobs:
     - name: Validate Terraform configuration
       run: terraform validate
 
-    - name: Show Terraform plan
-      run: terraform plan -input=false
-      continue-on-error: true
-
     - name: Plan Terraform changes
-      run: terraform plan -input=false -out=tfplan
-      
-    - name: Show Terraform plan file
-      run: terraform show -json tfplan | jq '.'
-      if: success()
+      run: terraform plan -out=tfplan
+
+    - name: Show Terraform plan
+      run: terraform show tfplan
+
+    - name: Show Terraform plan in JSON (debug)
+      run: terraform show -json tfplan > tfplan.json
+
+    - name: Display plan JSON (debug)
+      run: cat tfplan.json | head -n 100
+
+    - name: Process plan with jq (debug)
+      run: cat tfplan.json | jq '.' > processed_plan.json
+
+    - name: Display processed plan (debug)
+      run: cat processed_plan.json | head -n 100
 
     - name: Apply Terraform changes
       run: terraform apply -auto-approve tfplan
