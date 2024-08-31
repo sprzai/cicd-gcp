@@ -16,11 +16,17 @@ resource "google_cloudfunctions_function" "function" {
 }
 
 resource "google_storage_bucket" "bucket" {
-  name = "bucket-function-le"
+  name     = "bucket-function-le"
+  location = "US"  # Añadimos la ubicación requerida
 }
 
 resource "google_storage_bucket_object" "archive" {
   name   = "function-source.zip"
   bucket = google_storage_bucket.bucket.name
   source = "./function-source.zip"
+}
+
+variable "project_id" {
+  description = "test-gcp-434200"
+  type        = string
 }

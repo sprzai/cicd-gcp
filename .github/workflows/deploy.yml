@@ -19,6 +19,13 @@ jobs:
       uses: google-github-actions/auth@v1
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
+    
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Upload function code
+      run: |
+        zip -j function-source.zip ./function/*
 
     - name: Initialize Terraform
       run: terraform init
