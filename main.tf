@@ -1,3 +1,8 @@
+provider "google" {
+  project = "test-gcp-434200"  # Reemplaza con tu ID de proyecto
+  region  = "us-central1"     # Puedes cambiar esta región si lo deseas
+}
+
 resource "google_storage_bucket" "func_bucket" {
   name          = "bucket-function-le2"
   location      = "US"
