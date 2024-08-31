@@ -1,0 +1,9 @@
+{
+    "name": "sample-http-function",
+    "version": "1.0.0",
+    "description": "Ejemplo de Cloud Function con logs",
+    "main": "index.js",
+    "dependencies": {
+      "@google-cloud/functions-framework": "^3.1.0"
+    }
+  }
