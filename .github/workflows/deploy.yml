@@ -32,3 +32,7 @@ jobs:
       id: plan
       run: terraform plan -no-color
       continue-on-error: true
+
+    - name: Apply Terraform changes
+      run: terraform apply -auto-approve tfplan
+      if: success()
