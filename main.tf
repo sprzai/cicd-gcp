@@ -22,7 +22,7 @@ resource "google_cloudfunctions_function" "func" {
   available_memory_mb = 128
   source_archive_bucket = google_storage_bucket.func_bucket.name
   source_archive_object = google_storage_bucket_object.func_src.name
-  trigger_http = true
+  trigger_http = true # 2
   entry_point = "helloWorld"
 }
 
