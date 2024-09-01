@@ -1,4 +1,3 @@
-// index.js
 
 const functions = require('@google-cloud/functions-framework');
 
