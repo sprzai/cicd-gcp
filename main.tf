@@ -17,7 +17,7 @@ resource "google_storage_bucket_object" "func_src" {
 
 resource "google_cloudfunctions_function" "func" {
   name                  = "func"
-  runtime               = "nodejs14"
+  runtime               = "nodejs20"
   description           = "some function"
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.func_bucket.name
