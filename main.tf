@@ -24,6 +24,7 @@ resource "google_cloudfunctions_function" "func" {
   source_archive_object = google_storage_bucket_object.func_src.name
   trigger_http          = true # 2
   entry_point           = "helloWorld"
+  region                = "us-central1"
 }
 
 resource "google_cloudfunctions_function_iam_member" "pub_access" {
