@@ -4,13 +4,13 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "func_bucket" {
-  name          = "bucket-function-le2"
+  name          = "bucket-function-le"
   location      = "US"
   force_destroy = true
 }
 
 resource "google_storage_bucket_object" "func_src" {
-  name   = "index.zip"
+  name   = "function-source.zip"
   bucket = google_storage_bucket.func_bucket.name
   source = "function-source.zip"
 }
