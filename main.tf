@@ -16,7 +16,7 @@ resource "google_storage_bucket_object" "func_src" {
 }
 
 resource "google_cloudfunctions_function" "func" {
-  name                  = "func"
+  name                  = "funcHello"
   runtime               = "nodejs20"
   description           = "some function"
   available_memory_mb   = 128
